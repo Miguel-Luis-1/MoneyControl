@@ -25,7 +25,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: tdBGColor,
-      appBar: _buildAppBar(),
       body: Stack(
         children: [
           Container(
@@ -193,30 +192,5 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
-AppBar _buildAppBar() {
-  return AppBar(
-    backgroundColor: tdBGColor,
-    elevation: 0,
-    title: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          'Money Control',
-          style: TextStyle(
-            color: Colors.green, // Altera a cor do texto para verde
-          ),),
-        Container(
-          height: 40,
-          width: 40,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset('assets/images/M-logo'), //Colocar a logo
-          ),
-        ),
-      ],
-    ),
-  );
-}
 
 }

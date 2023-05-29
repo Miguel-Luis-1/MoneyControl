@@ -139,12 +139,15 @@ class _HomeState extends State<Home> {
   }
 
   void _addToDoItem(String toDo) {
-    setState(() {
-      todosList.add(ToDo(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        todoText: toDo,
-      ));
-    });
+    if (toDo.isNotEmpty) {
+      setState(() {
+        todosList.add(ToDo(
+          id: DateTime.now().millisecondsSinceEpoch.toString(),
+          todoText: toDo,
+        ));
+      });
+    }
+
     _todoController.clear();
   }
 
@@ -192,5 +195,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
 }

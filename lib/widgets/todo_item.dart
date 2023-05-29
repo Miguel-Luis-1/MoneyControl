@@ -43,12 +43,12 @@ class ToDoItem extends StatelessWidget {
         ),
         trailing: Container(
           padding: EdgeInsets.all(0),
-          margin: EdgeInsets.symmetric(vertical: 12),
+          margin: EdgeInsets.symmetric(vertical: 5),
           height: 35,
           width: 35,
           decoration: BoxDecoration(
             color: tdRed,
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(10),
           ),
           child: IconButton(
             color: Colors.white,

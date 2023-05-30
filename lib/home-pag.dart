@@ -11,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   int paginaAtual = 0;
   late PageController pc;
 
@@ -20,8 +19,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     pc = PageController(initialPage: paginaAtual);
   }
-  
-  setPaginaAtual(pagina){
+
+  setPaginaAtual(pagina) {
     setState(() {
       paginaAtual = pagina;
     });
@@ -37,40 +36,27 @@ class _HomePageState extends State<HomePage> {
           Home(),
           Data(),
         ],
-
         onPageChanged: setPaginaAtual,
-
       ),
-
       bottomNavigationBar: BottomNavigationBar(
-
         currentIndex: paginaAtual,
         items: [
-
-          BottomNavigationBarItem(icon: Icon(Icons.list), label:'Lista de Contas'),
-          BottomNavigationBarItem(icon: Icon(Icons.data_exploration), label: 'Dados'),
-
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list), label: 'Lista de Contas'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.data_exploration), label: 'Dados'),
         ],
-
-       
-
-        onTap: (pagina){
-
-          pc.animateToPage (pagina, duration: Duration(microseconds: 400), 
-          curve: Curves.ease,
-
+        onTap: (pagina) {
+          pc.animateToPage(
+            pagina,
+            duration: Duration(microseconds: 400),
+            curve: Curves.ease,
           );
         },
-
       ),
-
     );
   }
 }
-
-
-
-
 
 AppBar _buildAppBar() {
   return AppBar(
@@ -83,13 +69,14 @@ AppBar _buildAppBar() {
           'Money Control',
           style: TextStyle(
             color: Colors.green, // Altera a cor do texto para verde
-          ),),
+          ),
+        ),
         Container(
           height: 40,
           width: 40,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.asset('assets/images/M-logo'), //Colocar a logo
+            child: Image.asset("assets/images/M-logo.png"), //Colocar a logo
           ),
         ),
       ],

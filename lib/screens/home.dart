@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../model/todo.dart';
 import '../constants/colors.dart';
 import '../widgets/todo_item.dart';
+import 'dart:convert';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -11,14 +13,20 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final todosList = ToDo.todoList();
+  late List<ToDo> todosList;
   List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();
+  late SharedPreferences sharedPreferences;
 
   @override
   void initState() {
-    _foundToDo = todosList;
     super.initState();
+    initSharedPreferences();
+  }
+
+  Future<void> initSharedPreferences() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    loadData();
   }
 
   @override
@@ -130,24 +138,28 @@ class _HomeState extends State<Home> {
     setState(() {
       todo.isDone = !todo.isDone;
     });
+    saveData();
   }
 
   void _deleteToDoItem(String id) {
     setState(() {
       todosList.removeWhere((item) => item.id == id);
     });
+    saveData();
   }
 
   void _addToDoItem(String toDo) {
     if (toDo.isNotEmpty) {
       setState(() {
-        todosList.add(ToDo(
-          id: DateTime.now().millisecondsSinceEpoch.toString(),
-          todoText: toDo,
-        ));
+        todosList.add(
+          ToDo(
+            id: DateTime.now().millisecondsSinceEpoch.toString(),
+            todoText: toDo,
+          ),
+        );
       });
+      saveData();
     }
-
     _todoController.clear();
   }
 
@@ -157,9 +169,8 @@ class _HomeState extends State<Home> {
       results = todosList;
     } else {
       results = todosList
-          .where((item) => item.todoText!
-              .toLowerCase()
-              .contains(enteredKeyword.toLowerCase()))
+          .where(
+              (item) => item.todoText!.toLowerCase().contains(enteredKeyword.toLowerCase()))
           .toList();
     }
 
@@ -194,5 +205,22 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+
+  void saveData() {
+    final spList = todosList.map((item) => json.encode(item.toMap())).toList();
+    sharedPreferences.setStringList('todosList', spList);
+  }
+
+  void loadData() {
+    final spList = sharedPreferences.getStringList('todosList');
+    if (spList != null) {
+      todosList = spList.map((item) => ToDo.fromMap(json.decode(item))).toList();
+    } else {
+      todosList = [];
+    }
+    setState(() {
+      _foundToDo = todosList;
+    });
   }
 }

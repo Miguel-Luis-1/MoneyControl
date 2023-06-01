@@ -100,8 +100,7 @@ class _HomeState extends State<Home> {
                   child: TextField(
                     controller: _todoController,
                     decoration: InputDecoration(
-                        hintText: 'Adicione uma conta pendente',
-                        border: InputBorder.none),
+                        hintText: 'ADICIONAR CONTA', border: InputBorder.none),
                   ),
                 ),
               ),
@@ -200,7 +199,7 @@ class _HomeState extends State<Home> {
             minWidth: 25,
           ),
           border: InputBorder.none,
-          hintText: 'Pesquisar',
+          hintText: 'PESQUISAR',
           hintStyle: TextStyle(color: tdGrey),
         ),
       ),

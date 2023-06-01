@@ -56,7 +56,7 @@ class _DataState extends State<Data> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Resultado',
+                      'Dados Mensais:',
                       style: TextStyle(
                         fontSize: 24.0,
                       ),
@@ -117,7 +117,7 @@ class _DataState extends State<Data> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Dados Anuais',
+                      'Resultado:',
                       style: TextStyle(
                         fontSize: 24.0,
                       ),

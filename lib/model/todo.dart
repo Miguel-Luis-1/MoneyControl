@@ -9,19 +9,17 @@ class ToDo {
     this.isDone = false,
   });
 
-ToDo.fromMap(Map map)
-    : this.id = map['id'],
-      this.todoText = map['todoText'],
-      this.isDone = false;
+ToDo.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        todoText = map['todoText'],
+        isDone = map['isDone'];
 
-
-  Map toMap(){
-
-    return {
-      'id': this.id,
-      'todoText': this.todoText,
-      'isDone': this.isDone,
-    };
+Map<String, dynamic> toMap() {
+  return {
+    'id': id,
+    'todoText': todoText,
+    'isDone': isDone,
+  };
 
   }
 

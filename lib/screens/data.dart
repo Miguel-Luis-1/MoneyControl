@@ -20,6 +20,9 @@ void initState() {
 }
 
 class _DataState extends State<Data> {
+  TextEditingController inputController1 = TextEditingController();
+  TextEditingController inputController2 = TextEditingController();
+  TextEditingController resultController = TextEditingController();
   int _selectedIndex = 0;
   List<String> listConteudo = [];
 
@@ -28,6 +31,15 @@ class _DataState extends State<Data> {
       _selectedIndex = index;
       // Implemente a ação para ir para a tela correspondente ao item selecionado
     });
+  }
+
+  void subtractInputs() {
+    double value1 = double.tryParse(inputController1.text) ?? 0.0;
+    double value2 = double.tryParse(inputController2.text) ?? 0.0;
+
+    double result = value1 - value2;
+
+    resultController.text = result.toStringAsFixed(2);
   }
 
   @override
@@ -70,6 +82,7 @@ class _DataState extends State<Data> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
+                      controller: inputController1,
                       decoration: InputDecoration(
                           hintText: 'SUA RENDA MENSAL',
                           border: InputBorder.none)),
@@ -93,6 +106,7 @@ class _DataState extends State<Data> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
+                    controller: inputController2,
                     decoration: InputDecoration(
                         hintText: 'CUSTO A PAGAR NO FINAL DO MÊS',
                         border: InputBorder.none),
@@ -129,6 +143,7 @@ class _DataState extends State<Data> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
+                    controller: resultController,
                     decoration: InputDecoration(
                         hintText: 'CUSTO A PAGAR NO FINAL DO MÊS',
                         border: InputBorder.none,
@@ -148,7 +163,7 @@ class _DataState extends State<Data> {
                         fontSize: 20,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: subtractInputs,
                     style: ElevatedButton.styleFrom(
                       primary: tdBlue,
                       minimumSize: Size(60, 60),

@@ -44,7 +44,7 @@ class _DataState extends State<Data> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Dados Mensais',
+                      'Resultado',
                       style: TextStyle(
                         fontSize: 24.0,
                       ),
@@ -156,20 +156,22 @@ class _DataState extends State<Data> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 25),
                 Container(
-                    width: 330,
-                    height: 80,
-                    color: Colors.white,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                            'Faça seus calculo para ter ideia de como anda a sua carteira '),
-                      ],
+                  padding:
+                      EdgeInsets.all(16.0), // Espaçamento interno do Container
+                  decoration: BoxDecoration(
+                    color: Colors.white, // Cor de fundo do Container
+                    borderRadius: BorderRadius.circular(
+                        8.0), // Borda arredondada do Container
+                  ),
+                  child: Text(
+                    'Faça seus calculo para ter ideia de como anda a sua carteira ',
+                    style: TextStyle(
+                      fontSize: 21.0, // Tamanho da fonte do texto
+                      color: Colors.black45, // Cor do texto
                     ),
-                    padding: const EdgeInsets.all(20)),
-                const SizedBox(height: 10),
+                  ),
+                ),
               ],
             ),
           ),

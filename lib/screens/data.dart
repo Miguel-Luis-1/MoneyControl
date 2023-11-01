@@ -145,7 +145,7 @@ class _DataState extends State<Data> {
                   child: TextField(
                     controller: resultController,
                     decoration: InputDecoration(
-                        hintText: 'CUSTO A PAGAR NO FINAL DO MÊS',
+                        hintText: 'DINHEIRO RESTANTE AO FINAL NO MÊS',
                         border: InputBorder.none,
                         enabled: false),
                   ),
@@ -158,7 +158,7 @@ class _DataState extends State<Data> {
                   ),
                   child: ElevatedButton(
                     child: Text(
-                      ('OK'),
+                      ('CALCULAR'),
                       style: TextStyle(
                         fontSize: 20,
                       ),
